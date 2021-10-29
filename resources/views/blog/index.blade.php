@@ -31,7 +31,7 @@
                                     <tr>
                                         <td class="text-center"><img
                                                 src="{{ url('') . Storage::url('public/blogs/') . $blog->image }}"
-                                                class="rounded" style="width: 150px">{{ $blog->image }}</td>
+                                                class="rounded" style="width: 150px"></td>
                                         <td>{{ $blog->title }}</td>
                                         <td>{!! $blog->content !!}</td>
                                         <td class="text-center">
