@@ -107,10 +107,31 @@ class BlogController extends Controller
         
         if($blog){
             // redirect dengan pesan sukses
-            return redirect()->route('blog.index')->with(['success'=>'Data berhasil disimpan!']);
+            return redirect()->route('blog.index')->with(['success'=>'Data berhasil diupdate!']);
         }else{
             // redirect dengan pesan error
-            return redirect()->route('blog.index')->with(['error'=>'Data gagal disimpan!']);
+            return redirect()->route('blog.index')->with(['error'=>'Data gagal diupdate!']);
         }
+    }
+    
+    /**
+     * destroy
+     * 
+     * @param mixed $id
+     * @return void
+     */
+    public function destroy($id){
+        $blog = Blog::findOrFail($id);
+        Storage::disk('local')->delete('public/blogs/'.$blog->image);
+        $blog->delete();
+        
+        if($blog){
+            // redirect dengan pesan sukses
+            return redirect()->route('blog.index')->with(['success'=>'Data berhasil dihapus!']);
+        }else{
+            // redirect dengan pesan error
+            return redirect()->route('blog.index')->with(['error'=>'Data gagal dihapus!']);
+        }
+        
     }
 }
